@@ -1,0 +1,58 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/numberActivityColor">
+
+        <TextView
+            android:id="@+id/numbers"
+            style="@style/category_style"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="@string/numbers_activity">
+        </TextView>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/familyMembersActivityColor">
+
+        <TextView
+            android:id="@+id/family_members"
+            style="@style/category_style"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="@string/family_activity">
+
+        </TextView>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorActivityColor">
+
+        <TextView
+            android:id="@+id/colors"
+            style="@style/category_style"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="@string/color_activity">
+
+        </TextView>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/pharesesActivityColor">
+
+        <TextView
+            android:id="@+id/pharas"
+            style="@style/category_style"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="@string/pharases_activity" />
+    </FrameLayout>
+</LinearLayout>
