@@ -1,0 +1,4 @@
+com/example/tourguide/MainActivity.java
+ com.example.tourguide.MainActivity
+com/example/tourguide/BuildConfig.java
+ com.example.tourguide.BuildConfig
