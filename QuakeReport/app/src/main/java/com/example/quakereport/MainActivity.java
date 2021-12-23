@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 //        here is the onItemClickListener for opening the web page when we click on any list item
-
+//this will open up the link which are associated to the specific earthquake
         QuakeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
