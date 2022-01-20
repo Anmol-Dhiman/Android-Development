@@ -24,7 +24,8 @@ import java.util.List;
 public final class QuakeWithJson {
     private static final String LOG_TAG = QuakeWithJson.class.getSimpleName();
 
-
+    private QuakeWithJson() {
+    }
     /**
      * Query the USGS dataset and return a list of {@link EarthQuakeData} objects.
      */
