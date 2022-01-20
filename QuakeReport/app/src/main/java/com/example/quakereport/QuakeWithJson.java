@@ -1,6 +1,5 @@
 package com.example.quakereport;
 
-import static androidx.core.content.PackageManagerCompat.LOG_TAG;
 
 import android.annotation.SuppressLint;
 import android.text.TextUtils;
