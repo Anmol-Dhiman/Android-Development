@@ -1,8 +1,8 @@
 package com.example.quakereport;
 
 import android.content.Context;
-
-import androidx.loader.content.AsyncTaskLoader;
+import android.content.AsyncTaskLoader;
+import java.util.List;
 
 import java.util.List;
 

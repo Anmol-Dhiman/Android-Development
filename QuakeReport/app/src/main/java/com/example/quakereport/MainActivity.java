@@ -1,7 +1,6 @@
 package com.example.quakereport;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.loader.content.AsyncTaskLoader;
 
 import android.app.LoaderManager;
 import android.content.Intent;
@@ -10,13 +9,13 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
+ import android.app.LoaderManager.LoaderCallbacks;
+ import android.widget.AdapterView;
 import android.widget.ListView;
-
-import java.util.ArrayList;
+  import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<EarthQuakeData>>{
+public class MainActivity extends AppCompatActivity implements LoaderCallbacks<List<EarthQuakeData>>{
 
     private EarthQuakeAdaptor adaptor;
     /**
@@ -76,9 +75,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     }
 
+
     @Override
     public Loader<List<EarthQuakeData>> onCreateLoader(int i, Bundle bundle) {
-         return new EarthquakeLoader(this, USGS_REQUEST_URL);
+        return new EarthquakeLoader(this, USGS_REQUEST_URL);
     }
 
     @Override

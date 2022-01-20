@@ -36,14 +36,14 @@ public final class QuakeWithJson {
 
         // Perform HTTP request to the URL and receive a JSON response back
         String jsonResponse = null;
+        List<EarthQuakeData> earthquakes=null;
         try {
             jsonResponse = makeHttpRequest(url);
+            earthquakes=extractFeatureFromJson(jsonResponse);
         } catch (IOException e) {
             Log.e(LOG_TAG, "Problem making the HTTP request.", e);
         }
 
-        // Extract relevant fields from the JSON response and create a list of {@link Earthquake}s
-        List<EarthQuakeData> earthquakes = extractFeatureFromJson(jsonResponse);
 
         // Return the list of {@link Earthquake}s
         return earthquakes;
@@ -110,18 +110,29 @@ public final class QuakeWithJson {
      * Convert the {@link InputStream} into a String which contains the
      * whole JSON response from the server.
      */
-    private static String readFromStream(InputStream inputStream) throws IOException {
-        StringBuilder output = new StringBuilder();
-        if (inputStream != null) {
-            InputStreamReader inputStreamReader = new InputStreamReader(inputStream, Charset.forName("UTF-8"));
-            BufferedReader reader = new BufferedReader(inputStreamReader);
+    private static String readFromStream (InputStream inputStream) {
+        InputStreamReader streamReader = null;
+        BufferedReader reader = null;
+        StringBuilder result = new StringBuilder();
+
+        if(inputStream == null) {
+            return null;
+        }
+
+        streamReader = new InputStreamReader(inputStream, Charset.forName("UTF-8"));
+        reader = new BufferedReader(streamReader);
+        try {
             String line = reader.readLine();
             while (line != null) {
-                output.append(line);
+
+                result.append(line);
                 line = reader.readLine();
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return output.toString();
+
+        return result.toString();
     }
 
     /**
