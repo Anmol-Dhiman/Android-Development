@@ -51,9 +51,8 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
 //            loaderManager.initLoader(EARTHQUAKE_LOADER_ID, null, this);
 //
 //        }
-            TextView mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
-            QuakeListView.setEmptyView(mEmptyStateTextView);
-
+        TextView mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
+        QuakeListView.setEmptyView(mEmptyStateTextView);
 
 
         adaptor = new EarthQuakeAdaptor(this, new ArrayList<EarthQuakeData>());
@@ -90,15 +89,21 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
 
     @Override
     public void onLoadFinished(Loader<List<EarthQuakeData>> loader, List<EarthQuakeData> earthquakes) {
+     // Hide loading indicator because the data has been loaded
+        View loadingIndicator = findViewById(R.id.loading_indicator);
+        loadingIndicator.setVisibility(View.GONE);
 
+        // Set empty state text to display "No earthquakes found."
         mEmptyStateTextView.setText(R.string.no_earthquakes);
 
+        // Clear the adapter of previous earthquake data
         adaptor.clear();
 
+        // If there is a valid list of {@link Earthquake}s, then add them to the adapter's
+        // data set. This will trigger the ListView to update.
         if (earthquakes != null && !earthquakes.isEmpty()) {
-            // mAdapter.addAll(earthquakes);
+            adaptor.addAll(earthquakes);
         }
-
 
 
     }
