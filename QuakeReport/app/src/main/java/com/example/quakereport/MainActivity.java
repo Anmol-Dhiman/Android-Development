@@ -2,22 +2,27 @@ package com.example.quakereport;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.LoaderManager;
 import android.content.Intent;
 import android.content.Loader;
+
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
- import android.app.LoaderManager.LoaderCallbacks;
- import android.widget.AdapterView;
+import android.app.LoaderManager.LoaderCallbacks;
+import android.widget.AdapterView;
 import android.widget.ListView;
-  import java.util.ArrayList;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements LoaderCallbacks<List<EarthQuakeData>>{
+public class MainActivity extends AppCompatActivity implements LoaderCallbacks<List<EarthQuakeData>> {
 
-    private EarthQuakeAdaptor adaptor;
+    EarthQuakeAdaptor adaptor;
+    TextView mEmptyStateTextView;
+
     /**
      * Constant value for the earthquake loader ID. We can choose any integer.
      * This really only comes into play if you're using multiple loaders.
@@ -28,26 +33,28 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
      */
 
 
-
     private static final String USGS_REQUEST_URL =
-            "http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&orderby=time&minmag=4&limit=10";
+            "http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&eventtype=earthquake&orderby=time&minmag=1&limit=10";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-        // Get a reference to the LoaderManager, in order to interact with loaders.
-        LoaderManager loaderManager = getLoaderManager();
-
-        // Initialize the loader. Pass in the int ID constant defined above and pass in null for
-        // the bundle. Pass in this activity for the LoaderCallbacks parameter (which is valid
-        // because this activity implements the LoaderCallbacks interface).
-        loaderManager.initLoader(EARTHQUAKE_LOADER_ID, null, this);
-
-
         ListView QuakeListView = (ListView) findViewById(R.id.list);
+
+        // Checking the internet connection before initializing the loader
+//        ConnectivityManager manager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+//        NetworkInfo networkInfo = manager.getActiveNetworkInfo();
+//
+//        if (networkInfo != null && networkInfo.isConnected()) {
+//            LoaderManager loaderManager = getLoaderManager();
+//            loaderManager.initLoader(EARTHQUAKE_LOADER_ID, null, this);
+//
+//        }
+            TextView mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
+            QuakeListView.setEmptyView(mEmptyStateTextView);
+
+
 
         adaptor = new EarthQuakeAdaptor(this, new ArrayList<EarthQuakeData>());
         QuakeListView.setAdapter(adaptor);
@@ -83,15 +90,19 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
 
     @Override
     public void onLoadFinished(Loader<List<EarthQuakeData>> loader, List<EarthQuakeData> earthquakes) {
-        // Clear the adapter of previous earthquake data
+
+        mEmptyStateTextView.setText(R.string.no_earthquakes);
+
         adaptor.clear();
 
-        // If there is a valid list of {@link Earthquake}s, then add them to the adapter's
-        // data set. This will trigger the ListView to update.
         if (earthquakes != null && !earthquakes.isEmpty()) {
-            adaptor.addAll(earthquakes);
+            // mAdapter.addAll(earthquakes);
         }
+
+
+
     }
+
     @Override
     public void onLoaderReset(Loader<List<EarthQuakeData>> loader) {
         // Loader reset, so we can clear out our existing data.

@@ -26,20 +26,21 @@ public final class QuakeWithJson {
 
     private QuakeWithJson() {
     }
+
     /**
      * Query the USGS dataset and return a list of {@link EarthQuakeData} objects.
      */
     @SuppressLint("RestrictedApi")
-    public static List<EarthQuakeData> fetchEarthquakeData(String requestUrl) {
+    public static ArrayList<EarthQuakeData> fetchEarthquakeData(String requestUrl) {
         // Create URL object
         URL url = createUrl(requestUrl);
 
         // Perform HTTP request to the URL and receive a JSON response back
         String jsonResponse = null;
-        List<EarthQuakeData> earthquakes=null;
+        ArrayList<EarthQuakeData> earthquakes = new ArrayList<>();
         try {
             jsonResponse = makeHttpRequest(url);
-            earthquakes=extractFeatureFromJson(jsonResponse);
+            earthquakes = extractFeatureFromJson(jsonResponse);
         } catch (IOException e) {
             Log.e(LOG_TAG, "Problem making the HTTP request.", e);
         }
@@ -67,39 +68,24 @@ public final class QuakeWithJson {
      */
     private static String makeHttpRequest(URL url) throws IOException {
         String jsonResponse = "";
-
-        // If the URL is null, then return early.
-        if (url == null) {
-            return jsonResponse;
-        }
-
         HttpURLConnection urlConnection = null;
         InputStream inputStream = null;
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestMethod("GET");
             urlConnection.setReadTimeout(10000 /* milliseconds */);
             urlConnection.setConnectTimeout(15000 /* milliseconds */);
-            urlConnection.setRequestMethod("GET");
             urlConnection.connect();
-
-            // If the request was successful (response code 200),
-            // then read the input stream and parse the response.
-            if (urlConnection.getResponseCode() == 200) {
-                inputStream = urlConnection.getInputStream();
-                jsonResponse = readFromStream(inputStream);
-            } else {
-                Log.e(LOG_TAG, "Error response code: " + urlConnection.getResponseCode());
-            }
+            inputStream = urlConnection.getInputStream();
+            jsonResponse = readFromStream(inputStream);
         } catch (IOException e) {
-            Log.e(LOG_TAG, "Problem retrieving the earthquake JSON results.", e);
+            // TODO: Handle the exception
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
             }
             if (inputStream != null) {
-                // Closing the input stream could throw an IOException, which is why
-                // the makeHttpRequest(URL url) method signature specifies than an IOException
-                // could be thrown.
+                // function must handle java.io.IOException here
                 inputStream.close();
             }
         }
@@ -110,12 +96,12 @@ public final class QuakeWithJson {
      * Convert the {@link InputStream} into a String which contains the
      * whole JSON response from the server.
      */
-    private static String readFromStream (InputStream inputStream) {
+    private static String readFromStream(InputStream inputStream) {
         InputStreamReader streamReader = null;
         BufferedReader reader = null;
         StringBuilder result = new StringBuilder();
 
-        if(inputStream == null) {
+        if (inputStream == null) {
             return null;
         }
 
@@ -139,14 +125,14 @@ public final class QuakeWithJson {
      * Return a list of {@link EarthQuakeData} objects that has been built up from
      * parsing the given JSON response.
      */
-    private static List<EarthQuakeData> extractFeatureFromJson(String earthquakeJSON) {
+    private static ArrayList<EarthQuakeData> extractFeatureFromJson(String earthquakeJSON) {
         // If the JSON string is empty or null, then return early.
         if (TextUtils.isEmpty(earthquakeJSON)) {
             return null;
         }
 
         // Create an empty ArrayList that we can start adding earthquakes to
-        List<EarthQuakeData> earthquakes = new ArrayList<>();
+        ArrayList<EarthQuakeData> earthquakes = new ArrayList<>();
 
         // Try to parse the JSON response string. If there's a problem with the way the JSON
         // is formatted, a JSONException exception object will be thrown.
@@ -201,13 +187,6 @@ public final class QuakeWithJson {
         // Return the list of earthquakes
         return earthquakes;
     }
-
-
-
-
-
-
-
 
 
 }
