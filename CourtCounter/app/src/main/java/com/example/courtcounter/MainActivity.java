@@ -8,6 +8,9 @@ import android.view.View;
 
 
 public class MainActivity extends AppCompatActivity {
+//    score counting variables for both the team
+
+//    here
     int TeamAScore = 0;
     int TeamBScore = 0;
 
