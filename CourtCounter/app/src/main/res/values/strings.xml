@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Court Counter</string>
+    <color name="app_name">@color/black</color>
+</resources>
