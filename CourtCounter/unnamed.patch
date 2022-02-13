@@ -1,0 +1,34 @@
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_main.xml b/app/src/main/res/layout/activity_main.xml
+--- a/app/src/main/res/layout/activity_main.xml	(revision 28b98ab94c35c406217c8c05d6efcb3eaa12990b)
++++ b/app/src/main/res/layout/activity_main.xml	(revision 876988d73eb1b9579eb49576720a81fb803a6ccb)
+@@ -22,6 +22,7 @@
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:gravity="center"
++
+                 android:text="Team A"
+ 
+                 android:textSize="19sp">
+Index: app/src/main/java/com/example/courtcounter/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/courtcounter/MainActivity.java b/app/src/main/java/com/example/courtcounter/MainActivity.java
+--- a/app/src/main/java/com/example/courtcounter/MainActivity.java	(revision 876988d73eb1b9579eb49576720a81fb803a6ccb)
++++ b/app/src/main/java/com/example/courtcounter/MainActivity.java	(revision ca100ce8edd09937e687337532100f3f6a4b0948)
+@@ -8,6 +8,9 @@
+ 
+ 
+ public class MainActivity extends AppCompatActivity {
++//    score counting variables for both the team
++
++//    here
+     int TeamAScore = 0;
+     int TeamBScore = 0;
+ 
