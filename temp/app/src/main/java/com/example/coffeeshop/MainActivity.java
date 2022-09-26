@@ -14,7 +14,6 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     int number = 0;
-    String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void Name(View view) {
         EditText temp = (EditText) findViewById(R.id.name_field);
-        name = temp.getText().toString();
+        return temp.getText().toString();
 
     }
 
@@ -51,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void display() {
         TextView temp = (TextView) findViewById(R.id.count);
-        temp.setText(""+number);
+        temp.setText("" + number);
     }
 
     public String content() {
@@ -69,18 +68,20 @@ public class MainActivity extends AppCompatActivity {
         } else {
             sum = 5 * number;
         }
-        String temp = "Name: " + name + "\nAdded Whipped Cream? " + temp1 + "\nAdded Chocolate? " + temp2 + "\nTotal Amount: " + sum+"\nThank You!!";
-   return temp;
+        String temp = "Name: " + Name() + "\nAdded Whipped Cream? " + temp1 + "\nAdded Chocolate? " + temp2
+                + "\nTotal Amount: " + sum + "\nThank You!!";
+        return temp;
     }
 
     public void OrderButton(View view) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse("mailto:"));
         intent.putExtra(Intent.EXTRA_EMAIL, "dummy@gamil.com");
-        intent.putExtra(Intent.EXTRA_SUBJECT, "Coffee Order for " + name);
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Coffee Order for " + Name());
         intent.putExtra(Intent.EXTRA_TEXT, content());
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
+
     }
 }

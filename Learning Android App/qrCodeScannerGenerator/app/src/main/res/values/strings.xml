@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">QrScanner&amp;Generator</string>
+    <string name="qrpass">QRPass</string>
+    <string name="welcome_">Welcome !</string>
+    <string name="generate">Generate</string>
+    <string name="scan">Scan</string>
+</resources>

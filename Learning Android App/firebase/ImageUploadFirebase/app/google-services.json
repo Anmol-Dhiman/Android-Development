@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1079102203260",
+    "project_id": "imageuploadfirebase-f9239",
+    "storage_bucket": "imageuploadfirebase-f9239.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1079102203260:android:1f5f09a899faf686ff70f9",
+        "android_client_info": {
+          "package_name": "com.example.imageuploadfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1079102203260-i3o9g7hoi01vs19am4sl5rvqpflu670e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8zKRurUg7tcyIp9ZeQicwLvho3USETvo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1079102203260-i3o9g7hoi01vs19am4sl5rvqpflu670e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

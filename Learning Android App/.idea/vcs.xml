@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/GithubApiAssignment" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/JetPack Compose/kotlin/Coroutines" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Pets" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/RoomMVVM" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/searchButton" vcs="Git" />
+  </component>
+</project>
