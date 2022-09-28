@@ -38,7 +38,6 @@ fun ThursdayTrivia(name: String) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier.fillMaxSize(),
-
                 verticalArrangement = Arrangement.Center
             )
             {
