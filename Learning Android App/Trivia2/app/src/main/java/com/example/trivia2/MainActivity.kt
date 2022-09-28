@@ -45,7 +45,7 @@ fun Trivia2(modifier: Modifier = Modifier) {
     }
     Column() {
         Image(
-            painter = painterResource(id = R.drawable.banner),
+            painter = painterResource(id = R.drawable.banner_small),
             contentDescription = "banner image"
         )
         Spacer(modifier = Modifier.height(20.dp))
