@@ -3,9 +3,9 @@ package com.example.example
 import com.google.gson.annotations.SerializedName
 
 
-data class Options (
+data class Options(
 
-  @SerializedName("key"   ) var key   : Int?    = null,
-  @SerializedName("lable" ) var lable : String? = null
+    @SerializedName("key") var key: Int,
+    @SerializedName("lable") var lable: String
 
 )

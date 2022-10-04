@@ -1,7 +1,5 @@
 package com.example.retrofitmvvm.Repository.Retrofit
 
-import android.util.Log
-import android.widget.Toast
 
 import androidx.lifecycle.MutableLiveData
 import com.example.example.QuizData

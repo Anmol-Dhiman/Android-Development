@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Trivia3</string>
+    <string name="hotel1">Royal Indian</string>
+    <string name="hotel2">New Restaurant</string>
+    <string name="hotel3">J.W.Marriot</string>
+    <string name="hotel4">Hyatt</string>
+    <string name="h1desc">Taste the brilliance of Indian Thalis</string>
+    <string name="h2desc">Pizza,Burger,Sandwich and snacks</string>
+    <string name="h3desc">Great place to hangout with your friends</string>
+    <string name="h4desc">Come ,Eat and interact</string>
+    <string name="Rating1">4.1</string>
+    <string name="Rating2">4.2</string>
+    <string name="Rating3">4.4</string>
+    <string name="Rating5">4.8</string>
+</resources>
