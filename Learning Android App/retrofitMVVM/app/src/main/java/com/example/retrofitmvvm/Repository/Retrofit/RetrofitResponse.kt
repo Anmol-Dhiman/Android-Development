@@ -15,3 +15,5 @@ object RetrofitResponse {
         quizData = retrofit.create(GetDataAPI::class.java)
     }
 }
+
+
